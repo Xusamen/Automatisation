@@ -24,6 +24,7 @@ gestionnaire_etape
     ELSE
         Set Global Variable    ${statut_global}    KO
         Log    STATUS: KO | Etape: ${nom_technique} | Erreur: ${erreur}    ERROR
+        Run Keyword And Ignore Error    arreter_app
         Fail    ${erreur}
     END
 

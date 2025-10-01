@@ -61,9 +61,9 @@ Gestion des absences
     clique	bouton_ajouter
     choisis option    option_anglais    choix_matiere
     saisis_hover_max    11/03/2026    champ_debut_absence    50   
-    saisis_hover_max    07:00    champ_debut_absence    150
+    saisis_hover_max    07:00    champ_debut_heure_absence_1    150
     saisis_hover_max    11/03/2026    champ_fin_absence    50    
-    saisis_hover_max    09:00    champ_fin_absence    150
+    saisis_hover_max    09:00    champ_fin_heure_absence_1    150
     saisis "Panne mecanique" dans le champ "champ_description"
     clique    bouton_1
     touche directionnelle bas
@@ -85,9 +85,9 @@ Gestion des absences
     clique	bouton_ajouter
     choisis option    option_hg    choix_matiere
     saisis_hover_max    17/05/2026    champ_debut_absence    50   
-    saisis_hover_max    15:00    champ_debut_absence    150
+    saisis_hover_max    15:00    champ_debut_heure_absence_2    150
     saisis_hover_max    17/05/2026    champ_fin_absence    50    
-    saisis_hover_max    17:00    champ_fin_absence    150
+    saisis_hover_max    17:00    champ_fin_heure_absence_2    150
     saisis "Problemes familiaux" dans le champ "champ_description"
     clique    bouton_1
     touche directionnelle bas
@@ -119,9 +119,9 @@ Gestion des absences
     choisis option    option_justifier    choix_statut_absence
     choisis option    option_math    choix_matiere
     saisis_hover_max    25/06/2026    champ_debut_absence    50   
-    saisis_hover_max    07:00    champ_debut_absence    150
+    saisis_hover_max    07:00    champ_debut_heure_absence_3    150
     saisis_hover_max    25/06/2026    champ_fin_absence    50    
-    saisis_hover_max    09:00    champ_fin_absence    150
+    saisis_hover_max    09:00    champ_fin_heure_absence_3    150
     saisis "Souffrant du paludisme" dans le champ "champ_description"
     clique    bouton_1
     touche directionnelle bas

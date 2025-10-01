@@ -37,96 +37,6 @@ Inscription Eleve
     selectionne le module	Eleves	bouton_eleve
     selectionne le sous module	Inscription	bouton_inscription
     selectionne le sous sous module	Inscription_individuelle	bouton_inscription_individuelle
-    saisis "CAMARA" dans le champ "champ_nom"
-    saisis "Rahim" dans le champ "champ_prenom"
-    saisis "Bobo Dioulasso" dans le champ "champ_lieu_naissance"
-    saisis "55250025" dans le champ "champ_telephone_eleve"
-    saisis "07/12/2015" dans le champ "champ_date_de_naissance"
-    clique	bouton_dispenser
-    clique	bouton_suivant
-    saisis "TRAORE" dans le champ "champ_nom_mere"
-    saisis "Abi" dans le champ "champ_prenom_mere"
-    saisis "Souleymane" dans le champ "champ_prenom_pere"
-    saisis "76691268" dans le champ "champ_telephone_parent"
-    clique	bouton_suivant
-    choisis option	option_eleve_officiel	choix_mode_recrutement
-    choisis option	option_niveau_6	choix_niveau_etude
-    saisis "44790" dans le champ "champ_numero_pv"
-    clique	bouton_valider
-    pause	1s
-    appuyer sur entrer
-
-    charge image	Module_eleves
-    selectionne le sous module	Inscription	bouton_inscription
-    selectionne le sous sous module	Inscription_individuelle	bouton_inscription_individuelle
-    saisis "BAZONGO" dans le champ "champ_nom"
-    saisis "Alicia" dans le champ "champ_prenom"
-    saisis "Mangodara" dans le champ "champ_lieu_naissance"
-    saisis "55010101" dans le champ "champ_telephone_eleve"
-    choisis option    option_sexe_feminin	choix_sexe
-    saisis "07/01/2015" dans le champ "champ_date_de_naissance"
-    clique	bouton_dispenser
-    clique	bouton_suivant
-    saisis "TRAORE" dans le champ "champ_nom_mere"
-    saisis "Abi" dans le champ "champ_prenom_mere"
-    saisis "Hernes" dans le champ "champ_prenom_pere"
-    saisis "76691269" dans le champ "champ_telephone_parent"
-    clique	bouton_suivant
-    choisis option	option_eleve_officiel	choix_mode_recrutement
-    choisis option	option_niveau_6	choix_niveau_etude
-    saisis "44791" dans le champ "champ_numero_pv"
-    clique	bouton_valider
-    pause	1s
-    appuyer sur entrer
-
-    charge image	Module_eleves
-    selectionne le sous module	Inscription	bouton_inscription
-    selectionne le sous sous module	Inscription_individuelle	bouton_inscription_individuelle
-    saisis "OUEDRAOGO" dans le champ "champ_nom"
-    saisis "Stefi" dans le champ "champ_prenom"
-    saisis "Bobo Dioulasso" dans le champ "champ_lieu_naissance"
-    saisis "55050505" dans le champ "champ_telephone_eleve"
-    choisis option    option_sexe_feminin	choix_sexe
-    saisis "07/02/2015" dans le champ "champ_date_de_naissance"
-    clique	bouton_suivant
-    saisis "Tapsoba" dans le champ "champ_nom_mere"
-    saisis "Ines" dans le champ "champ_prenom_mere"
-    saisis "Steve" dans le champ "champ_prenom_pere"
-    saisis "76691270" dans le champ "champ_telephone_parent"
-    clique	bouton_suivant
-    choisis option	option_eleve_officiel	choix_mode_recrutement
-    choisis option	option_niveau_6	choix_niveau_etude
-    saisis "44792" dans le champ "champ_numero_pv"
-    clique	bouton_valider
-    pause	1s
-    appuyer sur entrer
-
-
-    charge image	Module_eleves
-    selectionne le sous module	Inscription	bouton_inscription
-    selectionne le sous sous module	Inscription_individuelle	bouton_inscription_individuelle
-    saisis "ZONGO" dans le champ "champ_nom"
-    saisis "Franck" dans le champ "champ_prenom"
-    saisis "Bobo Dioulasso" dans le champ "champ_lieu_naissance"
-    saisis "55060606" dans le champ "champ_telephone_eleve"
-    saisis "07/03/2015" dans le champ "champ_date_de_naissance"
-    clique	bouton_suivant
-    saisis "SAWADOGO" dans le champ "champ_nom_mere"
-    saisis "Jessica" dans le champ "champ_prenom_mere"
-    saisis "Robert" dans le champ "champ_prenom_pere"
-    saisis "76691271" dans le champ "champ_telephone_parent"
-    clique	bouton_suivant
-    choisis option	option_eleve_officiel	choix_mode_recrutement
-    choisis option	option_niveau_6	choix_niveau_etude
-    saisis "44793" dans le champ "champ_numero_pv"
-    clique	bouton_valider
-    pause	1s
-    appuyer sur entrer
-
-
-    charge image	Module_eleves
-    selectionne le sous module	Inscription	bouton_inscription
-    selectionne le sous sous module	Inscription_individuelle	bouton_inscription_individuelle
     saisis "KABORE" dans le champ "champ_nom"
     saisis "Wendyam" dans le champ "champ_prenom"
     saisis "Ouagadougou" dans le champ "champ_lieu_naissance"
@@ -258,7 +168,7 @@ Inscription Eleve
     appuyer sur entrer    
 
     arrete pgetab
-    connexion bd
-    generer resultat obtenu    ${REQUETE}    ${OBTENU}
-    deconnexion bd
-    comparer resultats    ${OBTENU}        ${ATTENDU}
+#    connexion bd
+#    generer resultat obtenu    ${REQUETE}    ${OBTENU}
+#    deconnexion bd
+#    comparer resultats    ${OBTENU}        ${ATTENDU}

@@ -1,37 +1,5 @@
 [
 	{
-		"NOM_ELV" : "CAMARA",
-		"PRENOM_ELV" : "Rahim",
-		"LIEU_NAIS_ELV" : "Bobo Dioulasso",
-		"PRNM_PERE_ELV" : "Souleymane",
-		"ANNEE_SCOLAIRE" : "2025/2026",
-		"CLASSE" : "6ème A"
-	},
-	{
-		"NOM_ELV" : "BAZONGO",
-		"PRENOM_ELV" : "Alicia",
-		"LIEU_NAIS_ELV" : "Mangodara",
-		"PRNM_PERE_ELV" : "Hernes",
-		"ANNEE_SCOLAIRE" : "2025/2026",
-		"CLASSE" : "6ème A"
-	},
-	{
-		"NOM_ELV" : "OUEDRAOGO",
-		"PRENOM_ELV" : "Stefi",
-		"LIEU_NAIS_ELV" : "Bobo Dioulasso",
-		"PRNM_PERE_ELV" : "Steve",
-		"ANNEE_SCOLAIRE" : "2025/2026",
-		"CLASSE" : "6ème A"
-	},
-	{
-		"NOM_ELV" : "ZONGO",
-		"PRENOM_ELV" : "Franck",
-		"LIEU_NAIS_ELV" : "Bobo Dioulasso",
-		"PRNM_PERE_ELV" : "Robert",
-		"ANNEE_SCOLAIRE" : "2025/2026",
-		"CLASSE" : "6ème A"
-	},
-	{
 		"NOM_ELV" : "KABORE",
 		"PRENOM_ELV" : "Wendyam",
 		"LIEU_NAIS_ELV" : "Ouagadougou",

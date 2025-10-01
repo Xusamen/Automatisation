@@ -10,7 +10,7 @@ ${IMAGE_PATH}    ${CURDIR}${/}images
 ${OBTENU}      ${CURDIR}${/}..${/}fichiers_json${/}TC_GestionAbsences${/}resultat_obtenu.json
 ${ATTENDU}     ${CURDIR}${/}..${/}fichiers_json${/}TC_GestionAbsences${/}resultat_attendu.json
 ${REQUETE} 
-
+#Definir la requete corresppondante
 
 
 
