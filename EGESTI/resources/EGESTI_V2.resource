@@ -35,7 +35,7 @@ je_saisis_sur_l_image
     [Arguments]    ${texte}    ${nom_image}
     _gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
 
-je_clique_sur_le_bouton
+je_clique_sur
     [Arguments]    ${nom_bouton}
     _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
 
