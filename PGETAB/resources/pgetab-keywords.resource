@@ -28,45 +28,45 @@ _gestionnaire_etape
     END
 
 #Keywords
-je_lance_l_application_egesti
+je lance l'application pgetab
     _gestionnaire_etape    lancer_app
 
-je_saisis_sur_l_image
+je saisis sur l'image
     [Arguments]    ${texte}    ${nom_image}
     _gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
 
-je_clique_sur
+je clique sur
     [Arguments]    ${nom_bouton}
     _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
 
-l_image_doit_etre_visible
+l image doit etre visible
     [Arguments]    ${nom_icone}
     _gestionnaire_etape    verifier_visibilite_technique    ${nom_icone}
 
-je_selectionne_le_module
+je selectionne le module
     [Arguments]    ${nom_module}
     _gestionnaire_etape    cliquer_bouton    ${nom_module}
 
-je_selectionne_le_sous_module
+je selectionne le sous module
     [Arguments]    ${nom_sous_module}
     _gestionnaire_etape    cliquer_bouton    ${nom_sous_module}
 
-appuyer_sur_entrer
+appuyer sur entrer
     _gestionnaire_etape    presser_touche_technique    ENTER
 
-appuyer_sur_tab
+appuyer sur tab
     _gestionnaire_etape    presser_touche_technique    TAB
 
-touche_directionnelle_gauche
+touche directionnelle gauche
     _gestionnaire_etape    presser_touche_technique    LEFT
 
-touche_directionnelle_droite
+touche directionnelle droite
     _gestionnaire_etape    presser_touche_technique    RIGHT
 
-touche_directionnelle_haut
+touche directionnelle haut
     _gestionnaire_etape    presser_touche_technique    UP
 
-touche_directionnelle_bas
+touche directionnelle bas
     _gestionnaire_etape    presser_touche_technique    DOWN
 
 
