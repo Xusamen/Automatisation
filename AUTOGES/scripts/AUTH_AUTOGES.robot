@@ -15,5 +15,5 @@ Authentification Auto-Ecole Scheduler
     Given lancer autoges
     When je saisis    Dev    id
     And je saisis     souris    password
-    And je clique sur    bouton_connexion
+    And je clique sur    connexion
     Then visible    icone
