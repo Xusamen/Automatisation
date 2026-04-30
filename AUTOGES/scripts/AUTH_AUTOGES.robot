@@ -1,7 +1,6 @@
 *** Settings ***
 Resource         ../resources/autoges-keywords.resource
 Library          OperatingSystem
-Library          Process
 
 Suite Setup     Start Sikuli Process
 Suite Teardown  Stop Remote Server
