@@ -3,7 +3,7 @@ Resource         ../resources/autoges-keywords.resource
 Library          OperatingSystem
 Library          Process
 
-Suite Setup     Demarrer l'environnement de test
+Suite Setup     Start Sikuli Process
 Suite Teardown  Stop Remote Server
 
 *** Variables ***
