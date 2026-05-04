@@ -28,26 +28,26 @@ _gestionnaire_etape
     END
 
 #Keywords
-je lance l'application pgetab
+lance pgetab
     _gestionnaire_etape    lancer_app
 
-je saisis sur l'image
+saisis
     [Arguments]    ${texte}    ${nom_image}
     _gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
 
-je clique sur
+clique
     [Arguments]    ${nom_bouton}
     _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
 
-l image doit etre visible
+verification
     [Arguments]    ${nom_icone}
     _gestionnaire_etape    verifier_visibilite_technique    ${nom_icone}
 
-je selectionne le module
+selectionne le module
     [Arguments]    ${nom_module}
     _gestionnaire_etape    cliquer_bouton    ${nom_module}
 
-je selectionne le sous module
+selectionne le sous module
     [Arguments]    ${nom_sous_module}
     _gestionnaire_etape    cliquer_bouton    ${nom_sous_module}
 
