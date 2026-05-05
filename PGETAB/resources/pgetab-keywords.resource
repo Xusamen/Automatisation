@@ -60,7 +60,7 @@ selectionne le sous module
     [Arguments]    ${nom_sous_module}    ${nom_bouton}
     gestionnaire_etape    cliquer_bouton    ${nom_bouton}
     gestionnaire_etape    charger_chemin_image_sous_module_technique    ${nom_sous_module}
-    Set Global Variable    ${module_actuel}    ${nom_module}
+    Set Global Variable    ${module_actuel}    ${nom_sous_module}
 
 appuyer sur entrer
     gestionnaire_etape    presser_touche_technique    ENTER
