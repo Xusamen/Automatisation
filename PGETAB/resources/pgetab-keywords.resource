@@ -10,7 +10,7 @@ ${chemin_images_base}    ${CURDIR}${/}..${/}images
 *** Keywords ***
 
 # gestion des statuts
-_gestionnaire_etape
+gestionnaire_etape
     [Arguments]    ${nom_technique}    @{arguments}
     IF    "${statut_global}" == "KO"
         Log    STATUS: BLOCKED | Etape: ${nom_technique}    WARN
@@ -27,47 +27,55 @@ _gestionnaire_etape
         Fail    ${erreur}
     END
 
-#Keywords
+
+
+
+# Keywords Fonctionnel
 lance pgetab
-    _gestionnaire_etape    lancer_app
+    gestionnaire_etape    lancer_app
 
 saisis
     [Arguments]    ${texte}    ${nom_image}
-    _gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
+    gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
+
+saisis "${texte}" dans le champ "${image_label}"
+    [Arguments]    ${distance}=150
+    gestionnaire_etape    saisir_donnee_hover_droit    ${image_label}    ${texte}    ${distance}
 
 clique
     [Arguments]    ${nom_bouton}
-    _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
 
 verification
     [Arguments]    ${nom_icone}
-    _gestionnaire_etape    verifier_visibilite_technique    ${nom_icone}
+    gestionnaire_etape    verifier_visibilite_technique    ${nom_icone}
 
 selectionne le module
     [Arguments]    ${nom_module}
-    _gestionnaire_etape    cliquer_bouton    ${nom_module}
+    gestionnaire_etape    cliquer_bouton    ${nom_module}
 
 selectionne le sous module
     [Arguments]    ${nom_sous_module}
-    _gestionnaire_etape    cliquer_bouton    ${nom_sous_module}
+    gestionnaire_etape    cliquer_bouton    ${nom_sous_module}
 
 appuyer sur entrer
-    _gestionnaire_etape    presser_touche_technique    ENTER
+    gestionnaire_etape    presser_touche_technique    ENTER
 
 appuyer sur tab
-    _gestionnaire_etape    presser_touche_technique    TAB
+    gestionnaire_etape    presser_touche_technique    TAB
 
 touche directionnelle gauche
-    _gestionnaire_etape    presser_touche_technique    LEFT
+    gestionnaire_etape    presser_touche_technique    LEFT
 
 touche directionnelle droite
-    _gestionnaire_etape    presser_touche_technique    RIGHT
+    gestionnaire_etape    presser_touche_technique    RIGHT
 
 touche directionnelle haut
-    _gestionnaire_etape    presser_touche_technique    UP
+    gestionnaire_etape    presser_touche_technique    UP
 
 touche directionnelle bas
-    _gestionnaire_etape    presser_touche_technique    DOWN
+    gestionnaire_etape    presser_touche_technique    DOWN
+
 
 
 
@@ -107,3 +115,15 @@ charger_chemin_sous_module_technique
     ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${module_actuel}${/}SM_${nom_sm}
     Add Image Path    ${nouveau_chemin}
     Log    Chemin images mis a jour : ${nouveau_chemin}
+
+saisir_donnee_hover_droit
+    [Arguments]    ${image_label}    ${texte}    ${distance}
+    Wait Until Screen Contain    ${image_label}.png    10
+    ${coordinates} =    Get Center    ${image_label}.png
+    ${target_x} =    Evaluate    ${coordinates[0]} + ${distance}
+    ${target_y} =    Set Variable    ${coordinates[1]}
+    Mouse Move    ${target_x}    ${target_y}
+    Click Region    ${target_x}    ${target_y}
+    Type    a    ${Key.CTRL}
+    Type    ${Key.BACKSPACE}
+    Input Text    ${image_label}.png    ${texte}
