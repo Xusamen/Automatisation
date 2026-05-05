@@ -113,7 +113,6 @@ presser_touche_technique
     [Arguments]    ${touche}
     Press Special Key    ${touche}
 
-
 charger_chemin_module_technique
     [Arguments]    ${nom_module}
     ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${nom_module}
@@ -125,9 +124,6 @@ charger_chemin_sous_module_technique
     ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${module_actuel}${/}SM_${nom_sm}
     Add Image Path    ${nouveau_chemin}
     Log    Chemin images mis a jour : ${nouveau_chemin}
-
-
-
 
 saisir_donnee_hover_droit
     [Arguments]    ${image_label}    ${texte}    ${distance}
