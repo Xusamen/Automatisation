@@ -62,6 +62,11 @@ selectionne le sous module
     gestionnaire_etape    charger_chemin_image_sous_module_technique    ${nom_sous_module}
     Set Global Variable    ${module_actuel}    ${nom_sous_module}
 
+selectionne le sous sous module
+    [Arguments]    ${nom_sous_sous_module}    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    gestionnaire_etape    charger_chemin_image_sous_sous_module_technique    ${nom_sous_sous_module}
+
 appuyer sur entrer
     gestionnaire_etape    presser_touche_technique    ENTER
 
@@ -120,6 +125,12 @@ charger_chemin_image_module_technique
     Log    Chemin images mis a jour : ${nouveau_chemin}
 
 charger_chemin_image_sous_module_technique
+    [Arguments]    ${nom_sm}
+    ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${module_actuel}${/}SM_${nom_sm}
+    Add Image Path    ${nouveau_chemin}
+    Log    Chemin images mis a jour : ${nouveau_chemin}
+
+charger_chemin_image_sous_sous_module_technique
     [Arguments]    ${nom_sm}
     ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${module_actuel}${/}SM_${nom_sm}
     Add Image Path    ${nouveau_chemin}
