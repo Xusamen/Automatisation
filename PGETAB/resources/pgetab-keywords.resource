@@ -99,7 +99,7 @@ lancer_app
 saisir_donnee
     [Arguments]    ${image}    ${valeur}
     Click    ${image}.png
-    Input Text    ${image}.png    ${valeur}
+    Input Text    ${EMPTY}    ${valeur}
 
 cliquer_bouton
     [Arguments]    ${bouton}
