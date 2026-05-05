@@ -51,12 +51,16 @@ verification
     gestionnaire_etape    verifier_visibilite_technique    ${nom_icone}
 
 selectionne le module
-    [Arguments]    ${nom_module}
-    gestionnaire_etape    cliquer_bouton    ${nom_module}
+    [Arguments]    ${nom_module}    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    gestionnaire_etape    charger_chemin_image_module_technique    ${nom_module}
+    Set Global Variable    ${module_actuel}    ${nom_module}   
 
 selectionne le sous module
-    [Arguments]    ${nom_sous_module}
-    gestionnaire_etape    cliquer_bouton    ${nom_sous_module}
+    [Arguments]    ${nom_sous_module}    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    gestionnaire_etape    charger_chemin_image_sous_module_technique    ${nom_sous_module}
+    Set Global Variable    ${module_actuel}    ${nom_module}
 
 appuyer sur entrer
     gestionnaire_etape    presser_touche_technique    ENTER
@@ -76,7 +80,10 @@ touche directionnelle haut
 touche directionnelle bas
     gestionnaire_etape    presser_touche_technique    DOWN
 
-
+pause
+    [Arguments]    ${temps}
+    [Documentation]    Attend un temps donné (ex: 2s, 500ms).
+    _gestionnaire_etape    attente_technique    ${temps}
 
 
 # Mots-clés Techniques
@@ -85,6 +92,9 @@ lancer_app
     Add Image Path    ${chemin_login}
     Start Process    C:\\EXECUTION_PGETAB.bat    shell=True
     Wait Until Screen Contain    bouton_login.png    20
+    ${chemin_accueil}    Set Variable    ${chemin_images_base}${/}Accueil
+    Add Image Path    ${chemin_accueil}
+    Log    Prêt sur la page d'accueil. Dossier chargé : ${chemin_accueil}
 
 saisir_donnee
     [Arguments]    ${image}    ${valeur}
@@ -101,8 +111,8 @@ verifier_visibilite_technique
 
 presser_touche_technique
     [Arguments]    ${touche}
-    # SikuliLibrary utilise 'Press Special Key' pour les touches non-alphanumériques
     Press Special Key    ${touche}
+
 
 charger_chemin_module_technique
     [Arguments]    ${nom_module}
@@ -116,6 +126,9 @@ charger_chemin_sous_module_technique
     Add Image Path    ${nouveau_chemin}
     Log    Chemin images mis a jour : ${nouveau_chemin}
 
+
+
+
 saisir_donnee_hover_droit
     [Arguments]    ${image_label}    ${texte}    ${distance}
     Wait Until Screen Contain    ${image_label}.png    10
@@ -127,3 +140,7 @@ saisir_donnee_hover_droit
     Type    a    ${Key.CTRL}
     Type    ${Key.BACKSPACE}
     Input Text    ${image_label}.png    ${texte}
+
+attente_technique
+    [Arguments]    ${temps}
+    Sleep    ${temps}
