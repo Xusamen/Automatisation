@@ -125,17 +125,37 @@ charger_chemin_technique
     Add Image Path    ${nouveau_chemin}
     Log    [CONTEXTE] Images chargées depuis : ${nouveau_chemin}
 
+effacer_champ
+    #correction
+    Press Special Key    CTRL 
+    Press Special Key    a
+    Press Special Key    DELETE
+
 saisir_donnee_hover_droit
     [Arguments]    ${image_label}    ${texte}    ${distance}
     Wait Until Screen Contain    ${image_label}.png    10
-    ${coordinates} =    Get Center    ${image_label}.png
-    ${target_x} =    Evaluate    ${coordinates[0]} + ${distance}
-    ${target_y} =    Set Variable    ${coordinates[1]}
-    Mouse Move    ${target_x}    ${target_y}
-    Click Region    ${target_x}    ${target_y}
-    Type    a    ${Key.CTRL}
-    Type    ${Key.BACKSPACE}
-    Input Text    ${image_label}.png    ${texte}
+    
+    #Récupérer les coordonnées (X, Y, W, H)
+    ${coordinates} =    Get Image Coordinates    ${image_label}.png
+    Log    [DEBUG] Coordonnées brutes de l'image : ${coordinates}    DEBUG
+    
+    #Calculer le centre ET forcer en entier (int)
+    ${center_x} =    Evaluate    int(${coordinates[0]} + (${coordinates[2]} / 2))
+    ${center_y} =    Evaluate    int(${coordinates[1]} + (${coordinates[3]} / 2))
+    Log    [INFO] Centre du label identifié à : X=${center_x}, Y=${center_y}
+    Mouse Move Location    ${center_x}    ${center_y}
+    Sleep    0.5s
+    ${target_x} =    Evaluate    int(${center_x} + ${distance})
+    Log    [INFO] Déplacement vers le champ à : X=${target_x}, Y=${center_y} (Distance: ${distance}px)
+    
+    #Faire le survol vers la droite
+    Mouse Move Location    ${target_x}    ${center_y}
+    
+    #Cliquer pour prendre le focus
+    Click    champ.png    0    0
+
+    #Nettoyage et saisie
+    Input Text    ${EMPTY}    ${texte}
 
 attente_technique
     [Arguments]    ${temps}
