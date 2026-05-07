@@ -66,7 +66,7 @@ selectionne le sous sous module
     [Arguments]    ${nom_sous_sous_module}    ${nom_bouton}
     gestionnaire_etape    cliquer_bouton    ${nom_bouton}
     gestionnaire_etape    charger_chemin_image_sous_sous_module_technique    ${nom_sous_sous_module}
-
+    
 appuyer sur entrer
     gestionnaire_etape    presser_touche_technique    ENTER
 
@@ -89,6 +89,27 @@ pause
     [Arguments]    ${temps}
     [Documentation]    Attend un temps donné (ex: 2s, 500ms).
     _gestionnaire_etape    attente_technique    ${temps}
+
+selectionne le module
+    [Arguments]    ${nom_module}    ${nom_bouton}
+    _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    # On définit le premier niveau : Module_X
+    Set Global Variable    ${module_actuel}    Module_${nom_module}
+    _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
+
+selectionne le sous module
+    [Arguments]    ${nom_sous_module}    ${nom_bouton}
+    _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    # On ajoute le sous-module au chemin actuel : Module_X/SM_Y
+    Set Global Variable    ${module_actuel}    ${module_actuel}${/}SM_${nom_sous_module}
+    _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
+
+selectionne le sous sous module
+    [Arguments]    ${nom_ssm}    ${nom_bouton}
+    _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    # On ajoute le sous-sous-module : Module_X/SM_Y/SSM_Z
+    Set Global Variable    ${module_actuel}    ${module_actuel}${/}SSM_${nom_ssm}
+    _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
 
 
 # Mots-clés Techniques
@@ -118,23 +139,11 @@ presser_touche_technique
     [Arguments]    ${touche}
     Press Special Key    ${touche}
 
-charger_chemin_image_module_technique
-    [Arguments]    ${nom_module}
-    ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${nom_module}
+charger_chemin_technique
+    [Arguments]    ${chemin_relatif}
+    ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}${chemin_relatif}
     Add Image Path    ${nouveau_chemin}
-    Log    Chemin images mis a jour : ${nouveau_chemin}
-
-charger_chemin_image_sous_module_technique
-    [Arguments]    ${nom_sm}
-    ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${module_actuel}${/}SM_${nom_sm}
-    Add Image Path    ${nouveau_chemin}
-    Log    Chemin images mis a jour : ${nouveau_chemin}
-
-charger_chemin_image_sous_sous_module_technique
-    [Arguments]    ${nom_sm}
-    ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${module_actuel}${/}SM_${nom_sm}
-    Add Image Path    ${nouveau_chemin}
-    Log    Chemin images mis a jour : ${nouveau_chemin}
+    Log    [CONTEXTE] Images chargées depuis : ${nouveau_chemin}
 
 saisir_donnee_hover_droit
     [Arguments]    ${image_label}    ${texte}    ${distance}
