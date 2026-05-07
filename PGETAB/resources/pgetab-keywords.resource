@@ -27,9 +27,6 @@ gestionnaire_etape
         Fail    ${erreur}
     END
 
-
-
-
 # Keywords Fonctionnel
 lance pgetab
     gestionnaire_etape    lancer_app
@@ -49,23 +46,6 @@ clique
 verification
     [Arguments]    ${nom_icone}
     gestionnaire_etape    verifier_visibilite_technique    ${nom_icone}
-
-selectionne le module_
-    [Arguments]    ${nom_module}    ${nom_bouton}
-    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
-    gestionnaire_etape    charger_chemin_image_module_technique    ${nom_module}
-    Set Global Variable    ${module_actuel}    ${nom_module}   
-
-selectionne le sous module_
-    [Arguments]    ${nom_sous_module}    ${nom_bouton}
-    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
-    gestionnaire_etape    charger_chemin_image_sous_module_technique    ${nom_sous_module}
-    Set Global Variable    ${module_actuel}    ${nom_sous_module}
-
-selectionne le sous sous module_
-    [Arguments]    ${nom_sous_sous_module}    ${nom_bouton}
-    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
-    gestionnaire_etape    charger_chemin_image_sous_sous_module_technique    ${nom_sous_sous_module}
     
 appuyer sur entrer
     gestionnaire_etape    presser_touche_technique    ENTER
