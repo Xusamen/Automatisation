@@ -14,9 +14,8 @@ Cas de test
 
     Given lance pgetab
     And   pause	4s
-    When  saisis	admin	champ_nom_utilisateur
+    And   saisis	admin	champ_nom_utilisateur
     And   saisis	admin	champ_mot_de_passe
     And   clique	bouton_login
     Then  verification	icone
     And   pause	5s
-    When  saisis "OUEDRAOGO" dans le champ "label_nom"
