@@ -36,7 +36,7 @@ saisis
     gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
 
 saisis "${texte}" dans le champ "${image_label}"
-    [Arguments]    ${distance}=150
+    [Arguments]    ${distance}=100
     gestionnaire_etape    saisir_donnee_hover_droit    ${image_label}    ${texte}    ${distance}
 
 clique
@@ -91,13 +91,23 @@ selectionne le sous sous module
     Set Global Variable    ${module_actuel}    ${module_actuel}${/}SSM_${nom_ssm}
     _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
 
+choisis option 
+    [Arguments]    ${image_option}    ${image_label_combo}
+    selectionner_combobox_par_label_hover    ${image_label_combo}    100   ${image_option}
+
+charge image
+    [Arguments]    ${chemin}
+    [Documentation]   image Module_xx/SM_xx/SSM_xx
+    Set Global Variable    ${module_actuel}    ${chemin}    
+    gestionnaire_etape    charger_repertoire_via_chemin_technique    ${chemin}
+
 
 # Mots-clés Techniques
 lancer_app
     ${chemin_login}    Set Variable    ${chemin_images_base}${/}Login
     Add Image Path    ${chemin_login}
     Start Process    C:\\EXECUTION_PGETAB.bat    shell=True
-    Wait Until Screen Contain    bouton_login.png    20
+    Wait Until Screen Contain    bouton_login.png    25
     ${chemin_accueil}    Set Variable    ${chemin_images_base}${/}Accueil
     Add Image Path    ${chemin_accueil}
     Log    Prêt sur la page d'accueil. Dossier chargé : ${chemin_accueil}
@@ -126,7 +136,7 @@ charger_chemin_technique
     Log    [CONTEXTE] Images chargées depuis : ${nouveau_chemin}
 
 effacer_champ
-    #correction
+    # a corriger
     Press Special Key    CTRL 
     Press Special Key    a
     Press Special Key    DELETE
@@ -134,12 +144,8 @@ effacer_champ
 saisir_donnee_hover_droit
     [Arguments]    ${image_label}    ${texte}    ${distance}
     Wait Until Screen Contain    ${image_label}.png    10
-    
-    #Récupérer les coordonnées (X, Y, W, H)
     ${coordinates} =    Get Image Coordinates    ${image_label}.png
     Log    [DEBUG] Coordonnées brutes de l'image : ${coordinates}    DEBUG
-    
-    #Calculer le centre ET forcer en entier (int)
     ${center_x} =    Evaluate    int(${coordinates[0]} + (${coordinates[2]} / 2))
     ${center_y} =    Evaluate    int(${coordinates[1]} + (${coordinates[3]} / 2))
     Log    [INFO] Centre du label identifié à : X=${center_x}, Y=${center_y}
@@ -147,16 +153,35 @@ saisir_donnee_hover_droit
     Sleep    0.5s
     ${target_x} =    Evaluate    int(${center_x} + ${distance})
     Log    [INFO] Déplacement vers le champ à : X=${target_x}, Y=${center_y} (Distance: ${distance}px)
-    
-    #Faire le survol vers la droite
     Mouse Move Location    ${target_x}    ${center_y}
-    
-    #Cliquer pour prendre le focus
-    Click    champ.png    0    0
-
-    #Nettoyage et saisie
+    Click    ${image_label}    ${distance}    0
     Input Text    ${EMPTY}    ${texte}
+
 
 attente_technique
     [Arguments]    ${temps}
     Sleep    ${temps}
+
+selectionner_combobox_par_label_hover
+    [Arguments]    ${image_label}    ${distance}    ${image_option}
+    
+    Wait Until Screen Contain    ${image_label}.png    10
+    ${coordinates} =    Get Image Coordinates    ${image_label}.png
+    
+    ${center_x} =    Evaluate    int(${coordinates[0]} + (${coordinates[2]} / 2))
+    ${center_y} =    Evaluate    int(${coordinates[1]} + (${coordinates[3]} / 2))
+    ${target_x} =    Evaluate    int(${center_x} + ${distance})
+    
+    Mouse Move Location    ${target_x}    ${center_y}
+    Sleep    0.2s
+    
+    Click    ${image_label}.png    50    0
+    Sleep    0.5s    
+    Wait Until Screen Contain    ${image_option}.png    5
+    Click    ${image_option}.png    0    0
+
+charger_repertoire_via_chemin_technique
+    [Arguments]    ${chemin_relatif}
+    ${chemin_final}    Set Variable    ${chemin_images_base}${/}${chemin_relatif}
+    Add Image Path    ${chemin_final}
+    Log    [CONTEXTE IMAGES] Basculement réussi vers le répertoire : ${chemin_final}
