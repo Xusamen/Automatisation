@@ -5,6 +5,7 @@ Library         Process
 *** Variables ***
 ${statut_global}    OK
 ${module_actuel}    ${EMPTY}
+${module_parent}    ${EMPTY}
 ${chemin_images_base}    ${CURDIR}${/}..${/}images
 
 *** Keywords ***
@@ -74,14 +75,15 @@ selectionne le module
     [Arguments]    ${nom_module}    ${nom_bouton}
     _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
     # On définit le premier niveau : Module_X
-    Set Global Variable    ${module_actuel}    Module_${nom_module}
+    Set Global Variable    ${module_parent}    Module_${nom_module}
+    Set Global Variable    ${module_actuel}    ${module_parent}
     _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
 
 selectionne le sous module
     [Arguments]    ${nom_sous_module}    ${nom_bouton}
     _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
     # On ajoute le sous-module au chemin actuel : Module_X/SM_Y
-    Set Global Variable    ${module_actuel}    ${module_actuel}${/}SM_${nom_sous_module}
+    Set Global Variable    ${module_actuel}    ${module_parent}${/}SM_${nom_sous_module}
     _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
 
 selectionne le sous sous module
