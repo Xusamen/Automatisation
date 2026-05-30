@@ -32,6 +32,9 @@ gestionnaire_etape
 lance pgetab
     gestionnaire_etape    lancer_app
 
+arrete pgetab
+    gestionnaire_etape    arret_app
+
 saisis
     [Arguments]    ${texte}    ${nom_image}
     gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
@@ -109,10 +112,16 @@ lancer_app
     ${chemin_login}    Set Variable    ${chemin_images_base}${/}Login
     Add Image Path    ${chemin_login}
     Start Process    C:\\EXECUTION_PGETAB.bat    shell=True
-    Wait Until Screen Contain    bouton_login.png    25
+    attente_technique    20s
+    Wait Until Screen Contain    bouton_login.png    5
     ${chemin_accueil}    Set Variable    ${chemin_images_base}${/}Accueil
     Add Image Path    ${chemin_accueil}
     Log    Prêt sur la page d'accueil. Dossier chargé : ${chemin_accueil}
+
+arret_app
+    Start Process    C:\\ARRET_PGETAB.bat    shell=True
+    attente_technique    10s
+    Log    arret de pgetab
 
 saisir_donnee
     [Arguments]    ${image}    ${valeur}
