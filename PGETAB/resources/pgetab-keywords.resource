@@ -7,6 +7,10 @@ ${statut_global}    OK
 ${module_actuel}    ${EMPTY}
 ${module_parent}    ${EMPTY}
 ${chemin_images_base}    ${CURDIR}${/}..${/}images
+${DB_HOST}    localhost
+${DB_USER}        root
+${DB_PASSWORD}    
+${DB_NAME}        pgetab
 
 *** Keywords ***
 
@@ -17,9 +21,7 @@ gestionnaire_etape
         Log    STATUS: BLOCKED | Etape: ${nom_technique}    WARN
         RETURN
     END
-
     ${status}    ${erreur} =    Run Keyword And Ignore Error    ${nom_technique}    @{arguments}
-
     IF    "${status}" == "PASS"
         Log    STATUS: OK | Etape: ${nom_technique}
     ELSE
@@ -33,14 +35,14 @@ lance pgetab
     gestionnaire_etape    lancer_app
 
 arrete pgetab
-    gestionnaire_etape    arret_app
+    gestionnaire_etape    arreter_app
 
 saisis
     [Arguments]    ${texte}    ${nom_image}
     gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
 
 saisis "${texte}" dans le champ "${image_label}"
-    [Arguments]    ${distance}=100
+    [Arguments]    ${distance}=75
     gestionnaire_etape    saisir_donnee_hover_droit    ${image_label}    ${texte}    ${distance}
 
 clique
@@ -97,12 +99,12 @@ selectionne le sous sous module
     _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
 
 choisis option 
-    [Arguments]    ${image_option}    ${image_label_combo}
-    selectionner_combobox_par_label_hover    ${image_label_combo}    100   ${image_option}
+    [Arguments]    ${image_option}    ${image_combo}
+    gestionnaire_etape    selectionner_combobox    ${image_combo}    100   ${image_option}
 
 charge image
     [Arguments]    ${chemin}
-    [Documentation]   image Module_xx/SM_xx/SSM_xx
+    [Documentation]   Charge des images en specifiant Module_xx/SM_xx/SSM_xx
     Set Global Variable    ${module_actuel}    ${chemin}    
     gestionnaire_etape    charger_repertoire_via_chemin_technique    ${chemin}
 
@@ -118,7 +120,7 @@ lancer_app
     Add Image Path    ${chemin_accueil}
     Log    Prêt sur la page d'accueil. Dossier chargé : ${chemin_accueil}
 
-arret_app
+arreter_app
     Start Process    C:\\ARRET_PGETAB.bat    shell=True
     attente_technique    10s
     Log    arret de pgetab
@@ -196,3 +198,40 @@ charger_repertoire_via_chemin_technique
     ${chemin_final}    Set Variable    ${chemin_images_base}${/}${chemin_relatif}
     Add Image Path    ${chemin_final}
     Log    [CONTEXTE IMAGES] Basculement réussi vers le répertoire : ${chemin_final}
+
+charger_dump_technique
+    [Arguments]    ${chemin_dump}
+    Log    [DATABASE] Début de la restauration du dump MySQL : ${chemin_dump}
+    ${commande} =    Set Variable    mysql -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} < "${chemin_dump}"
+    ${result} =    Run Process    ${commande}    shell=True
+    IF    ${result.rc} != 0
+        Fail    La restauration du dump MySQL a échoué ! Erreur: ${result.stderr}
+    END    
+    Log    [DATABASE] Base de recette MySQL synchronisée avec succès.
+
+exporter_dump_technique
+    [Arguments]    ${chemin_export_sql}
+    Log    [DATABASE] Début de l'exportation de la base MySQL...
+    
+    # Construction de la commande mysqldump
+    # Syntaxe : mysqldump -h host -u user -pPassword database > fichier_destination.sql
+    ${commande} =    Set Variable    mysqldump -h ${DB_HOST} -u ${DB_USER} -p${DB_PASSWORD} ${DB_NAME} > "${chemin_export_sql}"
+    
+    # Exécution via Process
+    ${result} =    Run Process    ${commande}    shell=True
+    
+    # Contrôle de l'exécution
+    IF    ${result.rc} != 0
+        Fail    L'exportation de la base de données a échoué ! Erreur: ${result.stderr}
+    END
+    
+    Log    [DATABASE] Base de recette exportée avec succès vers : ${chemin_export_sql}
+
+creation_json_obtenu
+    [Arguments]    ${requete_sql}
+    Log    [DATABASE] Creation du json grace à la base de donnée apres exec de l'automatisation
+
+
+comparer_json_technique
+    [Arguments]    ${json_reference}    ${json_creer}
+    Log    [DATABASE] Début de la comparaison des fichiers json

@@ -5,20 +5,19 @@ Library         Process
 *** Variables ***
 ${statut_global}    OK
 ${module_actuel}    ${EMPTY}
+${module_parent}    ${EMPTY}
 ${chemin_images_base}    ${CURDIR}${/}..${/}images
 
 *** Keywords ***
 
 # gestion des statuts
-_gestionnaire_etape
+gestionnaire_etape
     [Arguments]    ${nom_technique}    @{arguments}
     IF    "${statut_global}" == "KO"
         Log    STATUS: BLOCKED | Etape: ${nom_technique}    WARN
         RETURN
     END
-
     ${status}    ${erreur} =    Run Keyword And Ignore Error    ${nom_technique}    @{arguments}
-
     IF    "${status}" == "PASS"
         Log    STATUS: OK | Etape: ${nom_technique}
     ELSE
@@ -27,48 +26,77 @@ _gestionnaire_etape
         Fail    ${erreur}
     END
 
-#Keywords
-je_lance_l_application_egesti
-    _gestionnaire_etape    lancer_app
 
-je_saisis_sur_l_image
+# Keywords Fonctionnel
+lance egesti
+    gestionnaire_etape    lancer_app
+
+arrete egesti
+    gestionnaire_etape    arret_app
+
+saisis
     [Arguments]    ${texte}    ${nom_image}
-    _gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
+    gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
 
-je_clique_sur
+clique
     [Arguments]    ${nom_bouton}
-    _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
 
-l_image_doit_etre_visible
+verification
     [Arguments]    ${nom_icone}
-    _gestionnaire_etape    verifier_visibilite_technique    ${nom_icone}
-
-je_selectionne_le_module
-    [Arguments]    ${nom_module}
-    _gestionnaire_etape    cliquer_bouton    ${nom_module}
-
-je_selectionne_le_sous_module
-    [Arguments]    ${nom_sous_module}
-    _gestionnaire_etape    cliquer_bouton    ${nom_sous_module}
+    gestionnaire_etape    verifier_visibilite_technique    ${nom_icone}
 
 appuyer_sur_entrer
-    _gestionnaire_etape    presser_touche_technique    ENTER
+    gestionnaire_etape    presser_touche_technique    ENTER
 
 appuyer_sur_tab
-    _gestionnaire_etape    presser_touche_technique    TAB
+    gestionnaire_etape    presser_touche_technique    TAB
 
 touche_directionnelle_gauche
-    _gestionnaire_etape    presser_touche_technique    LEFT
+    gestionnaire_etape    presser_touche_technique    LEFT
 
 touche_directionnelle_droite
-    _gestionnaire_etape    presser_touche_technique    RIGHT
+    gestionnaire_etape    presser_touche_technique    RIGHT
 
 touche_directionnelle_haut
-    _gestionnaire_etape    presser_touche_technique    UP
+    gestionnaire_etape    presser_touche_technique    UP
 
 touche_directionnelle_bas
-    _gestionnaire_etape    presser_touche_technique    DOWN
+    gestionnaire_etape    presser_touche_technique    DOWN
 
+pause
+    [Arguments]    ${temps}
+    [Documentation]    Attend un temps donné (ex: 2s, 500ms).
+    gestionnaire_etape    attente_technique    ${temps}
+
+selectionne le module
+    [Arguments]    ${nom_module}    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    Set Global Variable    ${module_parent}    Module_${nom_module}
+    Set Global Variable    ${module_actuel}    ${module_parent}
+    gestionnaire_etape    charger_chemin_technique    ${module_actuel}
+
+selectionne le sous module
+    [Arguments]    ${nom_sous_module}    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    Set Global Variable    ${module_actuel}    ${module_parent}${/}SM_${nom_sous_module}
+    gestionnaire_etape    charger_chemin_technique    ${module_actuel}
+
+selectionne le sous sous module
+    [Arguments]    ${nom_ssm}    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    Set Global Variable    ${module_actuel}    ${module_actuel}${/}SSM_${nom_ssm}
+    gestionnaire_etape    charger_chemin_technique    ${module_actuel}
+
+choisis option 
+    [Arguments]    ${image_option}    ${image_combo}
+    gestionnaire_etape    selectionner_combobox    ${image_combo}    100   ${image_option}
+
+charge image
+    [Arguments]    ${chemin}
+    [Documentation]   Charge des images en specifiant Module_xx/SM_xx/SSM_xx
+    Set Global Variable    ${module_actuel}    ${chemin}    
+    gestionnaire_etape    charger_repertoire_via_chemin_technique    ${chemin}
 
 
 # Mots-clés Techniques
@@ -76,7 +104,20 @@ lancer_app
     ${chemin_login}    Set Variable    ${chemin_images_base}${/}Login
     Add Image Path    ${chemin_login}
     Start Process    C:\\EXECUTION_EGESTI.bat    shell=True
-    Wait Until Screen Contain    bouton_se_connecter.png    20
+    attente_technique    20s
+    Wait Until Screen Contain    bouton_se_connecter.png    5
+    ${chemin_accueil}    Set Variable    ${chemin_images_base}${/}Accueil
+    Add Image Path    ${chemin_accueil}
+    Log    EGESTI lancé & Dossier image chargé : ${chemin_accueil}
+
+arreter_app
+    Start Process    C:\\ARRET_PGETAB.bat    shell=True
+    attente_technique    10s
+    Log    arret de EGESTI
+
+attente_technique
+    [Arguments]    ${temps}
+    Sleep    ${temps}
 
 saisir_donnee
     [Arguments]    ${image}    ${valeur}
@@ -93,17 +134,34 @@ verifier_visibilite_technique
 
 presser_touche_technique
     [Arguments]    ${touche}
-    # SikuliLibrary utilise 'Press Special Key' pour les touches non-alphanumériques
     Press Special Key    ${touche}
 
-charger_chemin_module_technique
-    [Arguments]    ${nom_module}
-    ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${nom_module}
+charger_chemin_technique
+    [Arguments]    ${chemin_relatif}
+    ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}${chemin_relatif}
     Add Image Path    ${nouveau_chemin}
-    Log    Chemin images mis a jour : ${nouveau_chemin}
+    Log    [CONTEXTE] Images chargées depuis : ${nouveau_chemin}
 
-charger_chemin_sous_module_technique
-    [Arguments]    ${nom_sm}
-    ${nouveau_chemin}    Set Variable    ${chemin_images_base}${/}Module_${module_actuel}${/}SM_${nom_sm}
-    Add Image Path    ${nouveau_chemin}
-    Log    Chemin images mis a jour : ${nouveau_chemin}
+selectionner_combobox
+    [Arguments]    ${image_label}    ${distance}    ${image_option}
+    
+    Wait Until Screen Contain    ${image_label}.png    10
+    ${coordinates} =    Get Image Coordinates    ${image_label}.png
+    
+    ${center_x} =    Evaluate    int(${coordinates[0]} + (${coordinates[2]} / 2))
+    ${center_y} =    Evaluate    int(${coordinates[1]} + (${coordinates[3]} / 2))
+    ${target_x} =    Evaluate    int(${center_x} + ${distance})
+    
+    Mouse Move Location    ${target_x}    ${center_y}
+    Sleep    0.2s
+    
+    Click    ${image_label}.png    50    0
+    Sleep    0.5s    
+    Wait Until Screen Contain    ${image_option}.png    5
+    Click    ${image_option}.png    0    0
+
+charger_repertoire_via_chemin_technique
+    [Arguments]    ${chemin_relatif}
+    ${chemin_final}    Set Variable    ${chemin_images_base}${/}${chemin_relatif}
+    Add Image Path    ${chemin_final}
+    Log    [CONTEXTE IMAGES] Basculement réussi vers le répertoire : ${chemin_final}
