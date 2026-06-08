@@ -1,0 +1,36 @@
+fichier json pour la comparaison pour eviter de d'exporter la base de donnée 
+requete (remplissage des champs de fichier json)
+puis comparaison avec les 
+dans ce contexte j'ai les donnée en entre les de j'aurai des donnees en sortie qui seront
+puis j'ai un script qui verifie si les donnees on été bien traiter ou pas 
+en resumé  je fourni les donnees le logiciel fait le traitement et ensuite je recupere les données traiter et je verifie
+
+
+
+faire l'automatisation du traitement 
+requete specifique pour chaque cas de test dans le but de recuperer les 
+le fichier json doit contenir les differents parametres necessaire pour effectuer le cas de test 
+export des donnees traiter et remplissage des champs dedié
+effectuer traitement via le fichier json et comparer les resultats attentu au resultats obtenu
+
+Resultat attendu (fichier json pour comparaison)
+Resultat obtenu (creation du fichier json via des requetes specifique au lieu d'exporter la bd)
+quelles sont le keywords qu'on peut implementer ?
+export_donnee(requete)
+comparaison(fichier_json_ref1, fichier_json_export) faire le statut pour savoir si les donnees corespondent ou pas
+validation de l'automatisation du cas de test
+
+comment proceder 
+cas de test creer
+fichier json de reference creer
+automatisation
+creation du json obtenu apres automatisation (jeux de requete sql)
+comparation & decision
+validation ou invalidation
+
+le script robot framework aura ce workflow
+
+comparaison de fichier json
+
+
+
