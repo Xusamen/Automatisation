@@ -18,4 +18,4 @@ Cas de test
     And saisis	admin	champ_mot_de_passe
     And clique	bouton_login
     Then verification	icone
-    And pause	5s
+    And arrete pgetab

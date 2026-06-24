@@ -7,10 +7,6 @@ ${statut_global}    OK
 ${module_actuel}    ${EMPTY}
 ${module_parent}    ${EMPTY}
 ${chemin_images_base}    ${CURDIR}${/}..${/}images
-${DB_HOST}    localhost
-${DB_USER}        root
-${DB_PASSWORD}    
-${DB_NAME}        pgetab
 
 *** Keywords ***
 
@@ -40,6 +36,10 @@ arrete pgetab
 saisis
     [Arguments]    ${texte}    ${nom_image}
     gestionnaire_etape    saisir_donnee    ${nom_image}    ${texte}
+
+saisis texte
+    [Arguments]    ${texte}
+    gestionnaire_etape    saisir_texte    ${texte}
 
 saisis "${texte}" dans le champ "${image_label}"
     [Arguments]    ${distance}=75
@@ -130,6 +130,10 @@ saisir_donnee
     Click    ${image}.png
     Input Text    ${EMPTY}    ${valeur}
 
+saisir_texte
+    [Arguments]    ${texte}
+    Input Text    ${EMPTY}    ${texte}
+
 cliquer_bouton
     [Arguments]    ${bouton}
     Click    ${bouton}.png
@@ -175,7 +179,7 @@ attente_technique
     [Arguments]    ${temps}
     Sleep    ${temps}
 
-selectionner_combobox_par_label_hover
+selectionner_combobox
     [Arguments]    ${image_label}    ${distance}    ${image_option}
     
     Wait Until Screen Contain    ${image_label}.png    10
