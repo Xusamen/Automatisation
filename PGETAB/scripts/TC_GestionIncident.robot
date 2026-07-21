@@ -44,7 +44,6 @@ Gestion des incidents
     [Documentation]    Automatisation cas de test gestion d'incident
     execution dump    TC_INSERTION_ELEVE.sql 
     lance pgetab
-    pause	10s
     saisis	admin	champ_nom_utilisateur
     saisis	admin	champ_mot_de_passe
     clique	bouton_login

@@ -125,11 +125,10 @@ lancer_app
     ${chemin_login}    Set Variable    ${chemin_images_base}${/}Login
     Add Image Path    ${chemin_login}
     Start Process    C:\\FICHIER_AUTOM\\EXECUTION_PGETAB.bat    shell=True
-    attente_technique    20s
-    Wait Until Screen Contain    bouton_login.png    10
+    Wait Until Screen Contain    bouton_login.png    300
     ${chemin_accueil}    Set Variable    ${chemin_images_base}${/}Accueil
     Add Image Path    ${chemin_accueil}
-    Log    Prêt sur la page d'accueil. Dossier chargé : ${chemin_accueil}
+    Log    Prêt sur la page de connexion. L'interaction peut commencer.
 
 arreter_app
     Start Process    C:\\FICHIER_AUTOM\\ARRET_PGETAB.bat    shell=True

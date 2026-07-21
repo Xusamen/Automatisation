@@ -12,14 +12,11 @@ ${ATTENDU}     ${CURDIR}${/}..${/}fichiers_json${/}TC_GestionAbsences${/}resulta
 ${REQUETE} 
 #Definir la requete corresppondante
 
-
-
 *** Test Cases ***
 Desincription Eleves
     [Documentation]    Automatisation cas de test de lié à la desincription d'un eleve
     execution dump    TC_INSERTION_ELEVE.sql 
     lance pgetab
-    pause	10s
     saisis	admin	champ_nom_utilisateur
     saisis	admin	champ_mot_de_passe
     clique	bouton_login

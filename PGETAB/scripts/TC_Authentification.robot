@@ -13,7 +13,6 @@ Cas de test
     [Documentation]    Automatisation du cas de test  Authentification
 
     Given lance pgetab
-    And pause	10s
     When saisis	admin	champ_nom_utilisateur
     And saisis	admin	champ_mot_de_passe
     And clique	bouton_login

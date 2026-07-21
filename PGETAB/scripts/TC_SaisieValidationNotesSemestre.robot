@@ -36,7 +36,6 @@ Saisie et Validation des notes
     [Documentation]    Automatisation Cas de Test Saisie et Validation des notes
     execution dump    TC_ABS_INCIDENT_INPUT.sql
     lance pgetab
-    pause	10s
     saisis	admin	champ_nom_utilisateur
     saisis	admin	champ_mot_de_passe
     clique	bouton_login

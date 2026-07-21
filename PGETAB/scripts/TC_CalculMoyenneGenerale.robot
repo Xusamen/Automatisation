@@ -49,7 +49,6 @@ ${REQUETE}
 Calcul de moyenne generale
     [Documentation]    Automatisation cas de test calcul de moyenne generale
     lance pgetab
-    pause	10s
     saisis	admin	champ_nom_utilisateur
     saisis	admin	champ_mot_de_passe
     clique	bouton_login
