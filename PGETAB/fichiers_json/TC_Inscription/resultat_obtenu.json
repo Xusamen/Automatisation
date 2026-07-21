@@ -3,42 +3,80 @@
     "NOM_ELV": "CAMARA",
     "PRENOM_ELV": "Rahim",
     "LIEU_NAIS_ELV": "Bobo Dioulasso",
-    "PRNM_PERE_ELV": "Souleymane"
+    "PRNM_PERE_ELV": "Souleymane",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "6ème A"
   },
   {
     "NOM_ELV": "BAZONGO",
     "PRENOM_ELV": "Alicia",
     "LIEU_NAIS_ELV": "Mangodara",
-    "PRNM_PERE_ELV": "Hernes"
+    "PRNM_PERE_ELV": "Hernes",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "6ème A"
   },
   {
     "NOM_ELV": "OUEDRAOGO",
     "PRENOM_ELV": "Stefi",
     "LIEU_NAIS_ELV": "Bobo Dioulasso",
-    "PRNM_PERE_ELV": "Steve"
+    "PRNM_PERE_ELV": "Steve",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "6ème A"
   },
   {
     "NOM_ELV": "ZONGO",
     "PRENOM_ELV": "Franck",
     "LIEU_NAIS_ELV": "Bobo Dioulasso",
-    "PRNM_PERE_ELV": "Robert"
+    "PRNM_PERE_ELV": "Robert",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "6ème A"
   },
   {
     "NOM_ELV": "KABORE",
     "PRENOM_ELV": "Wendyam",
     "LIEU_NAIS_ELV": "Ouagadougou",
-    "PRNM_PERE_ELV": "Desiré"
+    "PRNM_PERE_ELV": "Desiré",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "6ème A"
   },
   {
     "NOM_ELV": "BIRBA",
     "PRENOM_ELV": "Emmanuel",
     "LIEU_NAIS_ELV": "Dedougou",
-    "PRNM_PERE_ELV": "Lucas"
+    "PRNM_PERE_ELV": "Lucas",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "6ème A"
   },
   {
     "NOM_ELV": "OUEDRAOGO",
     "PRENOM_ELV": "Richard",
     "LIEU_NAIS_ELV": "Ouahigouya",
-    "PRNM_PERE_ELV": "Florian Christian"
+    "PRNM_PERE_ELV": "Florian Christian",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "6ème A"
+  },
+  {
+    "NOM_ELV": "NIKIEMA",
+    "PRENOM_ELV": "Yve",
+    "LIEU_NAIS_ELV": "OUAGADOUGOU",
+    "PRNM_PERE_ELV": "Paul",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "2nd C1"
+  },
+  {
+    "NOM_ELV": "ZERBO",
+    "PRENOM_ELV": "Morija",
+    "LIEU_NAIS_ELV": "Ouahigouya",
+    "PRNM_PERE_ELV": "Abraham",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "2nd C1"
+  },
+  {
+    "NOM_ELV": "TRAORE",
+    "PRENOM_ELV": "Amina",
+    "LIEU_NAIS_ELV": "Bobo Dioulasso",
+    "PRNM_PERE_ELV": "Eric",
+    "ANNEE_SCOLAIRE": "2025/2026",
+    "CLASSE": "2nd C1"
   }
 ]

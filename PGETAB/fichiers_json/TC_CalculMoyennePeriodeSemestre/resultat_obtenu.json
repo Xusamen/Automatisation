@@ -1,0 +1,68 @@
+[
+  {
+    "NOM_ELV": "NIKIEMA",
+    "PRENOM_ELV": "Yve",
+    "LIBELLE_PERIODE": "Semestre 1",
+    "TOTAL_POIN_PONDERE": 322.84,
+    "RETRAIT_POIN_ABS": 0.0,
+    "RETRAIT_POIN_INCIDEN": 0.0,
+    "RETRAIT_POIN_AUTR": 0.0,
+    "MOY_PRIOD": 12.42,
+    "COEF_PRIOD": 26.0
+  },
+  {
+    "NOM_ELV": "NIKIEMA",
+    "PRENOM_ELV": "Yve",
+    "LIBELLE_PERIODE": "Semestre 2",
+    "TOTAL_POIN_PONDERE": 287.5,
+    "RETRAIT_POIN_ABS": 0.0,
+    "RETRAIT_POIN_INCIDEN": 0.0,
+    "RETRAIT_POIN_AUTR": 0.0,
+    "MOY_PRIOD": 11.06,
+    "COEF_PRIOD": 26.0
+  },
+  {
+    "NOM_ELV": "TRAORE",
+    "PRENOM_ELV": "Amina",
+    "LIBELLE_PERIODE": "Semestre 1",
+    "TOTAL_POIN_PONDERE": 325.89,
+    "RETRAIT_POIN_ABS": 0.0,
+    "RETRAIT_POIN_INCIDEN": 0.0,
+    "RETRAIT_POIN_AUTR": 0.0,
+    "MOY_PRIOD": 12.53,
+    "COEF_PRIOD": 26.0
+  },
+  {
+    "NOM_ELV": "TRAORE",
+    "PRENOM_ELV": "Amina",
+    "LIBELLE_PERIODE": "Semestre 2",
+    "TOTAL_POIN_PONDERE": 265.18,
+    "RETRAIT_POIN_ABS": 0.0,
+    "RETRAIT_POIN_INCIDEN": 0.0,
+    "RETRAIT_POIN_AUTR": 0.0,
+    "MOY_PRIOD": 10.2,
+    "COEF_PRIOD": 26.0
+  },
+  {
+    "NOM_ELV": "ZERBO",
+    "PRENOM_ELV": "Morija",
+    "LIBELLE_PERIODE": "Semestre 1",
+    "TOTAL_POIN_PONDERE": 342.95,
+    "RETRAIT_POIN_ABS": 0.0,
+    "RETRAIT_POIN_INCIDEN": 0.0,
+    "RETRAIT_POIN_AUTR": 0.0,
+    "MOY_PRIOD": 13.19,
+    "COEF_PRIOD": 26.0
+  },
+  {
+    "NOM_ELV": "ZERBO",
+    "PRENOM_ELV": "Morija",
+    "LIBELLE_PERIODE": "Semestre 2",
+    "TOTAL_POIN_PONDERE": 265.78,
+    "RETRAIT_POIN_ABS": 2.0,
+    "RETRAIT_POIN_INCIDEN": 8.0,
+    "RETRAIT_POIN_AUTR": 0.0,
+    "MOY_PRIOD": 10.22,
+    "COEF_PRIOD": 26.0
+  }
+]

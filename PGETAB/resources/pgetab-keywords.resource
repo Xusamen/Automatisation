@@ -1,6 +1,7 @@
 *** Settings ***
-Library         SikuliLibrary
-Library         Process
+Library        SikuliLibrary
+Library        Process
+Library        ../libraries/Key.py
 
 *** Variables ***
 ${statut_global}    OK
@@ -43,11 +44,20 @@ saisis texte
 
 saisis "${texte}" dans le champ "${image_label}"
     [Arguments]    ${distance}=75
-    gestionnaire_etape    saisir_donnee_hover_droit    ${image_label}    ${texte}    ${distance}
+    gestionnaire_etape    saisir_donnee_hover    ${image_label}    ${texte}    ${distance}
+
+saisis_hover_max
+    [Arguments]    ${texte}    ${image_label}    ${distance}
+    gestionnaire_etape    saisir_donnee_hover_max    ${image_label}    ${texte}    ${distance}
 
 clique
     [Arguments]    ${nom_bouton}
     gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+
+clique hover bas
+    [Arguments]    ${image_label}    ${image_label_2}    ${distance} 
+    [Documentation]    Exemple : saisis "Yann" sous le champ "label_nom" avec une distance de "80"
+    gestionnaire_etape    saisir_donnee_hover_bas    ${image_label}    ${image_label_2}   ${distance}
 
 verification
     [Arguments]    ${nom_icone}
@@ -113,15 +123,15 @@ charge image
 lancer_app
     ${chemin_login}    Set Variable    ${chemin_images_base}${/}Login
     Add Image Path    ${chemin_login}
-    Start Process    C:\\EXECUTION_PGETAB.bat    shell=True
+    Start Process    C:\\FICHIER_AUTOM\\EXECUTION_PGETAB.bat    shell=True
     attente_technique    20s
-    Wait Until Screen Contain    bouton_login.png    5
+    Wait Until Screen Contain    bouton_login.png    10
     ${chemin_accueil}    Set Variable    ${chemin_images_base}${/}Accueil
     Add Image Path    ${chemin_accueil}
     Log    Prêt sur la page d'accueil. Dossier chargé : ${chemin_accueil}
 
 arreter_app
-    Start Process    C:\\ARRET_PGETAB.bat    shell=True
+    Start Process    C:\\FICHIER_AUTOM\\ARRET_PGETAB.bat    shell=True
     attente_technique    10s
     Log    arret de pgetab
 
@@ -158,7 +168,7 @@ effacer_champ
     Press Special Key    a
     Press Special Key    DELETE
 
-saisir_donnee_hover_droit
+saisir_donnee_hover
     [Arguments]    ${image_label}    ${texte}    ${distance}
     Wait Until Screen Contain    ${image_label}.png    10
     ${coordinates} =    Get Image Coordinates    ${image_label}.png
@@ -172,6 +182,25 @@ saisir_donnee_hover_droit
     Log    [INFO] Déplacement vers le champ à : X=${target_x}, Y=${center_y} (Distance: ${distance}px)
     Mouse Move Location    ${target_x}    ${center_y}
     Click    ${image_label}    ${distance}    0
+    Input Text    ${EMPTY}    ${texte}
+
+
+saisir_donnee_hover_max
+    [Arguments]    ${image_label}    ${texte}    ${distance}
+    Wait Until Screen Contain    ${image_label}.png    10
+    ${coordinates} =    Get Image Coordinates    ${image_label}.png
+    Log    [DEBUG] Coordonnées brutes de l'image : ${coordinates}    DEBUG
+    ${center_x} =    Evaluate    int(${coordinates[0]} + (${coordinates[2]} / 2))
+    ${center_y} =    Evaluate    int(${coordinates[1]} + (${coordinates[3]} / 2))
+    Log    [INFO] Centre du label identifié à : X=${center_x}, Y=${center_y}
+    Mouse Move Location    ${center_x}    ${center_y}
+    Sleep    0.5s
+    ${target_x} =    Evaluate    int(${center_x} + ${distance})
+    Log    [INFO] Déplacement vers le champ à : X=${target_x}, Y=${center_y} (Distance: ${distance}px)
+    Mouse Move Location    ${target_x}    ${center_y}
+    Click    ${image_label}    ${distance}    0
+    selectionne tout
+    supprime selection
     Input Text    ${EMPTY}    ${texte}
 
 
@@ -202,3 +231,15 @@ charger_repertoire_via_chemin_technique
     ${chemin_final}    Set Variable    ${chemin_images_base}${/}${chemin_relatif}
     Add Image Path    ${chemin_final}
     Log    [CONTEXTE IMAGES] Basculement réussi vers le répertoire : ${chemin_final}
+
+
+saisir_donnee_hover_bas
+    [Arguments]    ${image_label}    ${image_label_2}    ${distance}
+    Wait Until Screen Contain    ${image_label}.png    10
+    ${coordinates} =    Get Image Coordinates    ${image_label}.png
+    ${center_x} =    Evaluate    int(${coordinates[0]} + (${coordinates[2]} / 2))
+    ${center_y} =    Evaluate    int(${coordinates[1]} + (${coordinates[3]} / 2))
+    ${target_y} =    Evaluate    int(${center_y} + ${distance})
+    Mouse Move Location    ${center_x}    ${target_y}
+    Sleep    0.2s
+    Click    ${image_label_2} 

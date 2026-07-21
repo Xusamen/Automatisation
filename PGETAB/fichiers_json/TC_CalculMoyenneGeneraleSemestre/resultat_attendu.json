@@ -1,0 +1,26 @@
+[
+	{
+		"NOM_ELV" : "NIKIEMA",
+		"PRENOM_ELV" : "Yve",
+		"MOY_GENRAL" : 11.7400,
+		"MOY_GENRAL_AV_RACHA" : 0.00,
+		"LIB_CLASSE" : "2nd C1",
+		"ANNEE_SCOLAIRE" : "2025/2026"
+	},
+	{
+		"NOM_ELV" : "ZERBO",
+		"PRENOM_ELV" : "Morija",
+		"MOY_GENRAL" : 11.5100,
+		"MOY_GENRAL_AV_RACHA" : 0.00,
+		"LIB_CLASSE" : "2nd C1",
+		"ANNEE_SCOLAIRE" : "2025/2026"
+	},
+	{
+		"NOM_ELV" : "TRAORE",
+		"PRENOM_ELV" : "Amina",
+		"MOY_GENRAL" : 11.3600,
+		"MOY_GENRAL_AV_RACHA" : 0.00,
+		"LIB_CLASSE" : "2nd C1",
+		"ANNEE_SCOLAIRE" : "2025/2026"
+	}
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "NOM_ELV": "BAZONGO",
+    "PRENOM_ELV": "Alicia",
+    "MOY_GENRAL": 13.12,
+    "MOY_GENRAL_AV_RACHA": 0.0,
+    "LIB_CLASSE": "6ème A",
+    "ANNEE_SCOLAIRE": "2026/2027"
+  },
+  {
+    "NOM_ELV": "BIRBA",
+    "PRENOM_ELV": "Emmanuel",
+    "MOY_GENRAL": 15.49,
+    "MOY_GENRAL_AV_RACHA": 0.0,
+    "LIB_CLASSE": "6ème A",
+    "ANNEE_SCOLAIRE": "2026/2027"
+  },
+  {
+    "NOM_ELV": "CAMARA",
+    "PRENOM_ELV": "Rahim",
+    "MOY_GENRAL": 12.34,
+    "MOY_GENRAL_AV_RACHA": 0.0,
+    "LIB_CLASSE": "6ème A",
+    "ANNEE_SCOLAIRE": "2026/2027"
+  },
+  {
+    "NOM_ELV": "KABORE",
+    "PRENOM_ELV": "Wendyam",
+    "MOY_GENRAL": 13.67,
+    "MOY_GENRAL_AV_RACHA": 0.0,
+    "LIB_CLASSE": "6ème A",
+    "ANNEE_SCOLAIRE": "2026/2027"
+  },
+  {
+    "NOM_ELV": "OUEDRAOGO",
+    "PRENOM_ELV": "Richard",
+    "MOY_GENRAL": 13.66,
+    "MOY_GENRAL_AV_RACHA": 0.0,
+    "LIB_CLASSE": "6ème A",
+    "ANNEE_SCOLAIRE": "2026/2027"
+  },
+  {
+    "NOM_ELV": "OUEDRAOGO",
+    "PRENOM_ELV": "Stefi",
+    "MOY_GENRAL": 14.56,
+    "MOY_GENRAL_AV_RACHA": 0.0,
+    "LIB_CLASSE": "6ème A",
+    "ANNEE_SCOLAIRE": "2026/2027"
+  },
+  {
+    "NOM_ELV": "ZONGO",
+    "PRENOM_ELV": "Franck",
+    "MOY_GENRAL": 12.93,
+    "MOY_GENRAL_AV_RACHA": 0.0,
+    "LIB_CLASSE": "6ème A",
+    "ANNEE_SCOLAIRE": "2026/2027"
+  }
+]

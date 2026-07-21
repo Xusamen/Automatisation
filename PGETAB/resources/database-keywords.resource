@@ -50,6 +50,22 @@ init bd
     ...    msg= Erreur lors de l'initialisation de la BD : ${resultat.stderr}
     Log    Base de données réinitialisée    level=INFO
 
+execution dump
+    [Documentation]    Exécute un dump fourni en paramètre depuis le répertoire par défaut.
+    [Arguments]        ${nom_fichier_dump}
+    ${chemin_fichier} =    Set Variable    ${CURDIR}/../piece_jointe/init_bd/${nom_fichier_dump}
+    ${resultat}=    Run Process
+    ...    mysql
+    ...    -u${DB_USER}
+    ...    -p${DB_PASSWORD}
+    ...    --host\=${DB_HOST}
+    ...    --port\=${DB_PORT}
+    ...    ${DB_NAME}
+    ...    -e    source ${chemin_fichier}
+    Should Be Equal As Integers    ${resultat.rc}    0
+    ...    msg=Erreur execution dump ${nom_fichier_dump} : ${resultat.stderr}
+    Log    Base de données réinitialisée avec le fichier : ${nom_fichier_dump}    level=INFO
+
 
 execution requete
     [Documentation]    Exécute une requête SELECT et retourne

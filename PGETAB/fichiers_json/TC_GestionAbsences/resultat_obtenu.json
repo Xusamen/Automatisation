@@ -1,0 +1,35 @@
+[
+  {
+    "NOM_ELV": "BAZONGO",
+    "PRENOM_ELV": "Alicia",
+    "DESC_ABS_ELV": "Panne mecanique",
+    "FL_DEL": "N",
+    "LIB_CLASSE": "6ème A",
+    "LIBELLE_MATIERE": "Ang",
+    "STATUT_ABSENCE": "Non Justifié",
+    "MOTIF_ABSENCE": "Malade",
+    "LIBELLE_PERIODE": "2T"
+  },
+  {
+    "NOM_ELV": "BAZONGO",
+    "PRENOM_ELV": "Alicia",
+    "DESC_ABS_ELV": "Problemes familiaux",
+    "FL_DEL": "N",
+    "LIB_CLASSE": "6ème A",
+    "LIBELLE_MATIERE": "H.G",
+    "STATUT_ABSENCE": "Non Justifié",
+    "MOTIF_ABSENCE": "Malade",
+    "LIBELLE_PERIODE": "3T"
+  },
+  {
+    "NOM_ELV": "KABORE",
+    "PRENOM_ELV": "Wendyam",
+    "DESC_ABS_ELV": "Souffrant du paludisme",
+    "FL_DEL": "N",
+    "LIB_CLASSE": "6ème A",
+    "LIBELLE_MATIERE": "Math",
+    "STATUT_ABSENCE": "Justifié",
+    "MOTIF_ABSENCE": "Malade",
+    "LIBELLE_PERIODE": "3T"
+  }
+]

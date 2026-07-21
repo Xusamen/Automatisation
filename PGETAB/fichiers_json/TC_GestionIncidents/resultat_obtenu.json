@@ -1,0 +1,24 @@
+[
+  {
+    "NOM_ELV": "BIRBA",
+    "PRENOM_ELV": "Emmanuel",
+    "LIB_CLASSE": "6ème A",
+    "LIB_LNG_INCIDENT": "Delinquance scolaire",
+    "NB_POIN_RETRAI": 8.0,
+    "PAREN_CONVOQ": "O",
+    "TYPE_INCIDENT": "Violance physique",
+    "TYPE_EXCLUSION": "Eclusion temporaire des cours de 15 jous ",
+    "LIBELLE_PERIODE": "2T"
+  },
+  {
+    "NOM_ELV": "OUEDRAOGO",
+    "PRENOM_ELV": "Stefi",
+    "LIB_CLASSE": "6ème A",
+    "LIB_LNG_INCIDENT": "Harcelement",
+    "NB_POIN_RETRAI": 5.0,
+    "PAREN_CONVOQ": "N",
+    "TYPE_INCIDENT": "Violance verbale",
+    "TYPE_EXCLUSION": "Eclusion temporaire des cours de 48h",
+    "LIBELLE_PERIODE": "3T"
+  }
+]

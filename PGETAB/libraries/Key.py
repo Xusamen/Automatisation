@@ -1,4 +1,6 @@
 import pyautogui
+import pyperclip
+import time
 from robot.api.deco import keyword
 
 class Key:
@@ -40,3 +42,13 @@ class Key:
     def saisir_en_majuscule(self, texte):
         """Saisit en majuscules sans toucher au Caps Lock."""
         pyautogui.typewrite(texte.upper(), interval=0.05)
+
+    @keyword("charger fichier")
+    def ouvrir_fichier_piece_jointe(self, chemin_complet):
+        time.sleep(1)
+        pyperclip.copy(chemin_complet)
+        pyautogui.hotkey('alt', 'n')
+        time.sleep(0.3)
+        pyautogui.hotkey('ctrl', 'a')
+        pyautogui.hotkey('ctrl', 'v')
+        pyautogui.press('enter')
