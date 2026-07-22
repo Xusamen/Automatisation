@@ -11,6 +11,29 @@ ${IMAGE_PATH}    ${CURDIR}${/}images
 ${OBTENU}      ${CURDIR}${/}..${/}fichiers_json${/}TC_DepenseAutre${/}resultat_obtenu.json
 ${ATTENDU}     ${CURDIR}${/}..${/}fichiers_json${/}TC_DepenseAutre${/}resultat_attendu.json
 ${REQUETE}
+...            SELECT
+...                ad.LIB_DEPENS,
+...                ad.INFO_FOURNISEUR,
+...                ad.MT_DEPEN_AUTR,
+...                ad.MT_DEPEN_PAY,
+...                ad.MT_DEPEN_TOT_PAYE,
+...                tc.MT_PAIEMENT_DEP,
+...                CASE
+...                    WHEN ad.ID_DEPENSE IS NULL THEN 'PAS DE DETAIL DEPENSE'
+...                    WHEN tc.ID_TRANSAC IS NULL THEN 'TRANSACTION CAISSE MANQUANTE'
+...                    WHEN tc.MT_PAIEMENT_DEP <> ad.MT_DEPEN_PAY THEN 'MONTANT INCOHERENT'
+...                    WHEN ad.MT_DEPEN_TOT_PAYE <> ad.MT_DEPEN_AUTR THEN 'DEPENSE PARTIELLEMENT PAYEE'
+...                    ELSE 'OK'
+...                END AS STATUT_VERIFICATION
+...            FROM CO_LST_DEPENSE ld
+...            LEFT JOIN CO_AUTR_DEPENSE ad
+...                ON ad.ID_DEPENSE = ld.ID_DEPENSE
+...            LEFT JOIN CO_TRANSAC_CAISSE tc
+...                ON tc.ID_DEPENSE = ad.ID_DEPENSE
+...                AND tc.NUM_PAIE_DEP = ad.NUM_ORDR_FACTUR
+...            ORDER BY
+...                ld.ID_DEPENSE,
+...                ad.NUM_ORDR_FACTUR;
 
 *** Test Cases ***
 Module Depense

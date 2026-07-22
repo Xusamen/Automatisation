@@ -11,6 +11,37 @@ ${IMAGE_PATH}    ${CURDIR}${/}images
 ${OBTENU}      ${CURDIR}${/}..${/}fichiers_json${/}TC_DepensePaiementPersonnel${/}resultat_obtenu.json
 ${ATTENDU}     ${CURDIR}${/}..${/}fichiers_json${/}TC_DepensePaiementPersonnel${/}resultat_attendu.json
 ${REQUETE}
+...            SELECT
+...                p.NOM_PERS,
+...                p.PRENOM_PERS,
+...                b.date_debut          AS PERIODE_DEBUT,
+...                b.date_fin            AS PERIODE_FIN,
+...                b.salaire_net,
+...                b.FL_VALIDE           AS BULLETIN_VALIDE,
+...                b.FL_PAYE             AS BULLETIN_PAYE,
+...                ps.SALAIR_MENS,
+...                tc.MT_PAIEMENT_DEP,
+...                CASE
+...                    WHEN b.ID_BULTIN IS NULL THEN 'PAS DE BULLETIN'
+...                    WHEN b.FL_PAYE = 'N' THEN 'BULLETIN NON MARQUE PAYE'
+...                    WHEN ps.ID_DEPENSE IS NULL THEN 'PAIEMENT NON ENREGISTRE'
+...                    WHEN tc.ID_TRANSAC IS NULL THEN 'TRANSACTION CAISSE MANQUANTE'
+...                    WHEN tc.MT_PAIEMENT_DEP <> ps.SALAIR_MENS THEN 'MONTANT INCOHERENT'
+...                    ELSE 'OK'
+...                END AS STATUT_VERIFICATION
+...            FROM pe_personnel p
+...            INNER JOIN co_cntra c
+...                ON c.ID_PERSONNEL = p.ID_PERSONNEL
+...            LEFT JOIN co_bultin_sal b
+...                ON b.ID_CNTRA = c.ID_CNTRA
+...            LEFT JOIN co_paiemen_salair ps
+...                ON ps.ID_BULTIN = b.ID_BULTIN
+...            LEFT JOIN co_transac_caisse tc
+...                ON tc.ID_DEPENSE = ps.ID_DEPENSE
+...            ORDER BY
+...                p.NOM_PERS,
+...                p.PRENOM_PERS,
+...                b.date_debut;
 *** Test Cases ***
 Module Depense
     [Documentation]    Automatisation du cas de test lié au paiement du personnel
@@ -85,7 +116,6 @@ Module Depense
     saisis_hover_max    RAS    champ_motif    50
     clique    bouton_valider_paiement_salaire
     arrete pgetab
-
     
     #Verification BD
     connexion bd

@@ -1,0 +1,26 @@
+[
+	{
+		"NOM_PERS" : "BANDE",
+		"PRENOM_PERS" : "Stephanie",
+		"PERIODE_DEBUT" : "2025-10-01",
+		"PERIODE_FIN" : "2025-10-31",
+		"salaire_net" : 252500.000,
+		"BULLETIN_VALIDE" : "O",
+		"BULLETIN_PAYE" : "O",
+		"SALAIR_MENS" : 252500.00,
+		"MT_PAIEMENT_DEP" : 252500.00,
+		"STATUT_VERIFICATION" : "OK"
+	},
+	{
+		"NOM_PERS" : "Camara",
+		"PRENOM_PERS" : "Madou",
+		"PERIODE_DEBUT" : "2025-10-01",
+		"PERIODE_FIN" : "2025-10-31",
+		"salaire_net" : 108950.000,
+		"BULLETIN_VALIDE" : "O",
+		"BULLETIN_PAYE" : "O",
+		"SALAIR_MENS" : 108950.00,
+		"MT_PAIEMENT_DEP" : 108950.00,
+		"STATUT_VERIFICATION" : "OK"
+	}
+]

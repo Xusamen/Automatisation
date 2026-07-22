@@ -53,6 +53,7 @@ ${ATTENDU}     ${CURDIR}${/}..${/}fichiers_json${/}TC_PaiementScolarite${/}resul
 *** Test Cases ***
 Paiement Scolarite
     [Documentation]    Automatisation Cas de Test Paiement Scolarite
+    execution dump    TC_INSERTION_ELEVE.sql 
     lance pgetab
     saisis	intendant	champ_nom_utilisateur
     saisis	souris	champ_mot_de_passe
@@ -167,10 +168,10 @@ Paiement Scolarite
     clique  champ_recherche_prenom_7
     selectionne tout
     supprime selection
+    arrete pgetab
 
 
     connexion bd
     generer resultat obtenu    ${REQUETE}    ${OBTENU}
     deconnexion bd
     comparer resultats    ${OBTENU}        ${ATTENDU}
-    arrete pgetab

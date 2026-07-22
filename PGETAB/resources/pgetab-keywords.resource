@@ -125,7 +125,8 @@ lancer_app
     ${chemin_login}    Set Variable    ${chemin_images_base}${/}Login
     Add Image Path    ${chemin_login}
     Start Process    C:\\FICHIER_AUTOM\\EXECUTION_PGETAB.bat    shell=True
-    Wait Until Screen Contain    bouton_login.png    300
+    Wait Until Screen Contain    fenetre_pgetab.png    300
+    Sleep    5s
     ${chemin_accueil}    Set Variable    ${chemin_images_base}${/}Accueil
     Add Image Path    ${chemin_accueil}
     Log    Prêt sur la page de connexion. L'interaction peut commencer.
@@ -137,6 +138,7 @@ arreter_app
 
 saisir_donnee
     [Arguments]    ${image}    ${valeur}
+    Wait Until Screen Contain    ${image}.png    10
     Click    ${image}.png
     Input Text    ${EMPTY}    ${valeur}
 

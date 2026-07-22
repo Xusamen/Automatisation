@@ -1,0 +1,20 @@
+[
+	{
+		"LIB_DEPENS" : "Paiement de factures eau, electricite, fibre",
+		"INFO_FOURNISEUR" : "Facture N°54 Sonabel, Facture N°10 ONEA, Facture N°1250 MOOV-FIBRE",
+		"MT_DEPEN_AUTR" : 75000.00,
+		"MT_DEPEN_PAY" : 75000.00,
+		"MT_DEPEN_TOT_PAYE" : 75000.00,
+		"MT_PAIEMENT_DEP" : 75000.00,
+		"STATUT_VERIFICATION" : "OK"
+	},
+	{
+		"LIB_DEPENS" : "Financement semaine culturel an 2025/2026",
+		"INFO_FOURNISEUR" : "Facture N°54 Location, Facture N°10 Decoration, Facture N°1250 Divers",
+		"MT_DEPEN_AUTR" : 575000.00,
+		"MT_DEPEN_PAY" : 575000.00,
+		"MT_DEPEN_TOT_PAYE" : 575000.00,
+		"MT_PAIEMENT_DEP" : 575000.00,
+		"STATUT_VERIFICATION" : "OK"
+	}
+]
