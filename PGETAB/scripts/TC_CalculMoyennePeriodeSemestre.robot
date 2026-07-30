@@ -2,9 +2,10 @@
 Resource         ../resources/pgetab-keywords.resource
 Resource         ../resources/database-keywords.resource
 Library          ../libraries/Key.py
+Resource         ../resources/utils-keywords.resource
 
-Suite Setup     Start Sikuli Process
-Suite Teardown  Stop Remote Server
+Suite Setup     init env and start
+Suite Teardown  stop and clean env
 
 *** Variables ***
 ${IMAGE_PATH}    ${CURDIR}${/}images
@@ -64,12 +65,12 @@ Calcul de moyenne periode
     choisis option    option_semestre_1    choix_periode1
     choisis option    option_2ndC1    choix_classe
     clique    bouton_calculer_moyenne_periode_classe
-    pause    1s
+    pause    3s
     appuyer sur entrer
 
     choisis option    option_semestre_2    choix_periode4
     clique    bouton_calculer_moyenne_periode_classe
-    pause    1s
+    pause    3s
     appuyer sur entrer   
 
     arrete pgetab   

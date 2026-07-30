@@ -1,9 +1,10 @@
 *** Settings ***
 Resource         ../resources/pgetab-keywords.resource
 Resource         ../resources/database-keywords.resource
+Resource         ../resources/utils-keywords.resource
 
-Suite Setup     Start Sikuli Process
-Suite Teardown  Stop Remote Server
+Suite Setup     init env and start
+Suite Teardown  stop and clean env
 
 *** Variables ***
 ${IMAGE_PATH}    ${CURDIR}${/}images

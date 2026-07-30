@@ -85,29 +85,29 @@ touche directionnelle bas
 pause
     [Arguments]    ${temps}
     [Documentation]    Attend un temps donné (ex: 2s, 500ms).
-    _gestionnaire_etape    attente_technique    ${temps}
+    gestionnaire_etape    attente_technique    ${temps}
 
 selectionne le module
     [Arguments]    ${nom_module}    ${nom_bouton}
-    _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
     # On définit le premier niveau : Module_X
     Set Global Variable    ${module_parent}    Module_${nom_module}
     Set Global Variable    ${module_actuel}    ${module_parent}
-    _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
+    gestionnaire_etape    charger_chemin_technique    ${module_actuel}
 
 selectionne le sous module
     [Arguments]    ${nom_sous_module}    ${nom_bouton}
-    _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
     # On ajoute le sous-module au chemin actuel : Module_X/SM_Y
     Set Global Variable    ${module_actuel}    ${module_parent}${/}SM_${nom_sous_module}
-    _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
+    gestionnaire_etape    charger_chemin_technique    ${module_actuel}
 
 selectionne le sous sous module
     [Arguments]    ${nom_ssm}    ${nom_bouton}
-    _gestionnaire_etape    cliquer_bouton    ${nom_bouton}
+    gestionnaire_etape    cliquer_bouton    ${nom_bouton}
     # On ajoute le sous-sous-module : Module_X/SM_Y/SSM_Z
     Set Global Variable    ${module_actuel}    ${module_actuel}${/}SSM_${nom_ssm}
-    _gestionnaire_etape    charger_chemin_technique    ${module_actuel}
+    gestionnaire_etape    charger_chemin_technique    ${module_actuel}
 
 choisis option 
     [Arguments]    ${image_option}    ${image_combo}
@@ -147,8 +147,9 @@ saisir_texte
     Input Text    ${EMPTY}    ${texte}
 
 cliquer_bouton
-    [Arguments]    ${bouton}
-    Click    ${bouton}.png
+    [Arguments]    ${bouton}    ${timeout}=10    ${retente_nombre}=3x    ${retente_intervalle}=1
+    Wait Until Screen Contain    ${bouton}.png    ${timeout}
+    Wait Until Keyword Succeeds    ${retente_nombre}    ${retente_intervalle}    Click    ${bouton}.png
 
 verifier_visibilite_technique
     [Arguments]    ${icone}

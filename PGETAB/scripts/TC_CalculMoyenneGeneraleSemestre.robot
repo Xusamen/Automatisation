@@ -2,9 +2,10 @@
 Resource         ../resources/pgetab-keywords.resource
 Resource         ../resources/database-keywords.resource
 Library          ../libraries/Key.py
+Resource         ../resources/utils-keywords.resource
 
-Suite Setup     Start Sikuli Process
-Suite Teardown  Stop Remote Server
+Suite Setup     init env and start
+Suite Teardown  stop and clean env
 
 *** Variables ***
 ${IMAGE_PATH}    ${CURDIR}${/}images
@@ -59,7 +60,7 @@ Calcul de moyenne generale
     selectionne le sous sous module    Moyenne_generale    bouton_moyenne_generale
     choisis option    option_2ndC1    choix_classe
     clique    bouton_valider_classe
-    pause    1s
+    pause    3s
     appuyer sur entrer
     connexion bd
     generer resultat obtenu    ${REQUETE}    ${OBTENU}

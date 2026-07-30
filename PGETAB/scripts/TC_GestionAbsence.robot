@@ -1,9 +1,10 @@
 *** Settings ***
 Resource         ../resources/pgetab-keywords.resource
 Resource         ../resources/database-keywords.resource
+Resource         ../resources/utils-keywords.resource
 
-Suite Setup     Start Sikuli Process
-Suite Teardown  Stop Remote Server
+Suite Setup     init env and start
+Suite Teardown  stop and clean env
 
 *** Variables ***
 ${IMAGE_PATH}    ${CURDIR}${/}images
@@ -50,9 +51,9 @@ Gestion des absences
     clique	bouton_login
     verification	icone
     pause	2s
-    selectionne le module	Evaluations	bouton_evaluations
+    selectionne le module	Evaluations    bouton_evaluations
     pause    1s
-    selectionne le module	Eleves	bouton_eleve
+    selectionne le module	Eleves    bouton_eleve
     selectionne le sous module    Absences    bouton_absences
     pause    2s
     saisis	BAZONGO    champ_nom
@@ -79,7 +80,8 @@ Gestion des absences
     touche directionnelle bas
     appuyer sur entrer
     clique    bouton_ajouter_absence
-    appuyer sur entrer
+    pause    1s
+    #appuyer sur entrer
 
     clique	bouton_ajouter
     choisis option    option_hg    choix_matiere
@@ -104,7 +106,8 @@ Gestion des absences
     touche directionnelle bas
     appuyer sur entrer
     clique    bouton_ajouter_absence
-    appuyer sur entrer
+    pause    1s
+    #appuyer sur entrer
 
     clique  champ_nom_1
     selectionne tout
@@ -138,7 +141,8 @@ Gestion des absences
     touche directionnelle bas
     appuyer sur entrer
     clique    bouton_ajouter_absence
-    appuyer sur entrer
+    pause    1s
+    #appuyer sur entrer
     arrete pgetab
 
     #Verification
