@@ -46,8 +46,7 @@ Gestion des absences
     [Documentation]    Automatisation cas de test suppression et modification absence
     execution dump    TC_SUP_MODIF_ABS_INPUT.sql   
     lance pgetab
-    saisis	admin	champ_nom_utilisateur
-    saisis	admin	champ_mot_de_passe
+    clique    lien_admin
     clique	bouton_login
     verification	icone
     pause	2s

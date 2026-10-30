@@ -18,8 +18,9 @@ Module Depense
     [Documentation]    Automatisation du cas de test lié au paiement du personnel
     execution dump    TC_PAIEMENT_BOURSE_INPUT.sql
     lance pgetab
-    saisis	intendant	champ_nom_utilisateur
-    saisis	souris	champ_mot_de_passe
+    saisis texte    intendant
+    appuyer sur tab
+    saisis texte	souris
     clique	bouton_login
     verification	icone
     pause	2s

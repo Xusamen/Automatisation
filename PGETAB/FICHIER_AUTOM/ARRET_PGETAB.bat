@@ -1,0 +1,13 @@
+@echo off
+echo Arret du client PGETAB...
+powershell -Command "Get-WmiObject Win32_Process -Filter 'name=''java.exe''' | Where-Object { $_.CommandLine -like '*pgetab-client*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+
+echo.
+echo Attente de 5 secondes...
+timeout /t 5 /nobreak
+
+echo Arret du serveur PGETAB...
+powershell -Command "Get-WmiObject Win32_Process -Filter 'name=''java.exe''' | Where-Object { $_.CommandLine -like '*pgetab-serveur*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+
+echo.
+echo PGETAB arrete...

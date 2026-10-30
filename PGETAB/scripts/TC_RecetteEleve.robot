@@ -56,8 +56,9 @@ Paiement Scolarite
     [Documentation]    Automatisation Cas de Test Paiement Scolarite
     execution dump    TC_INSERTION_ELEVE.sql 
     lance pgetab
-    saisis	intendant	champ_nom_utilisateur
-    saisis	souris	champ_mot_de_passe
+    saisis texte    intendant
+    appuyer sur tab
+    saisis texte	souris
     clique	bouton_login
     verification	icone
     pause	2s

@@ -1,0 +1,13 @@
+@echo off
+echo Arret du client EGESTI...
+powershell -Command "Get-WmiObject Win32_Process -Filter 'name=''java.exe''' | Where-Object { $_.CommandLine -like '*egesti-client*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+
+echo.
+echo Attente de 5 secondes...
+timeout /t 5 /nobreak
+
+echo Arret du serveur PGETAB...
+powershell -Command "Get-WmiObject Win32_Process -Filter 'name=''java.exe''' | Where-Object { $_.CommandLine -like '*egesti-serveur*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+
+echo.
+echo EGESTI arrete...

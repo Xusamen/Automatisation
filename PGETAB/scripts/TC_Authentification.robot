@@ -13,10 +13,9 @@ ${IMAGE_PATH}    ${CURDIR}${/}images
 Cas de test
     [Documentation]    Automatisation du cas de test  Authentification
 
-    Given lance pgetab
-    When saisis	admin	champ_nom_utilisateur
-    And saisis	admin	champ_mot_de_passe
-    And clique	bouton_login
-    Then verification	icone
-    And arrete pgetab
+    lance pgetab
+    clique    lien_admin
+    clique    bouton_login
+    verification    icone
+    arrete pgetab
     #Modifier en ajoutant l'usage d'identifiant erroné

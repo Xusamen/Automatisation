@@ -28,8 +28,7 @@ Inscription Eleve
     [Documentation]    Automatisation Cas de test Inscription Eleve
     execution dump    CONFIG_BASE.sql
     lance pgetab
-    saisis	admin	champ_nom_utilisateur
-    saisis	admin	champ_mot_de_passe
+    clique    lien_admin
     clique	bouton_login
     verification	icone
     pause	2s

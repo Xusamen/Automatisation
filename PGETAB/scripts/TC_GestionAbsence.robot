@@ -46,8 +46,7 @@ Gestion des absences
     [Documentation]    Automatisation cas de test de gestion des absences d'un eleve
     execution dump    TC_INSERTION_ELEVE.sql 
     lance pgetab
-    saisis	admin	champ_nom_utilisateur
-    saisis	admin	champ_mot_de_passe
+    clique    lien_admin
     clique	bouton_login
     verification	icone
     pause	2s

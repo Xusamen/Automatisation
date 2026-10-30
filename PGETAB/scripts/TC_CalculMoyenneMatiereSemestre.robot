@@ -46,8 +46,7 @@ ${REQUETE}
 Calcul de moyenne matiere
     [Documentation]    Automatisation Cas de Test Calcul de moyenne par matiere Periode semestrielle
     lance pgetab
-    saisis	admin	champ_nom_utilisateur
-    saisis	admin	champ_mot_de_passe
+    clique    lien_admin
     clique	bouton_login
     verification	icone
     pause	2s

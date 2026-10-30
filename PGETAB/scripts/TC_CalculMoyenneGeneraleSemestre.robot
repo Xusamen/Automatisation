@@ -50,8 +50,7 @@ ${REQUETE}
 Calcul de moyenne generale
     [Documentation]    Automatisation cas de test calcul de moyenne generale Periode semestrielle
     lance pgetab
-    saisis	admin	champ_nom_utilisateur
-    saisis	admin	champ_mot_de_passe
+    clique    lien_admin
     clique	bouton_login
     verification	icone
     pause	2s
