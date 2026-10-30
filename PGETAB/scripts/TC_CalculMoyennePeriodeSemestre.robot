@@ -55,6 +55,7 @@ Calcul de moyenne periode
     lance pgetab
     clique    lien_admin
     clique	bouton_login
+    pause    5s
     verification	icone
     pause	2s
     selectionne le module	Evaluation	bouton_evaluations

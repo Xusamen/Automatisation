@@ -16,6 +16,7 @@ Cas de test
     lance pgetab
     clique    lien_admin
     clique    bouton_login
+    pause    5s
     verification    icone
     arrete pgetab
     #Modifier en ajoutant l'usage d'identifiant erroné

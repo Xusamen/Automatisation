@@ -30,6 +30,7 @@ Inscription Eleve
     lance pgetab
     clique    lien_admin
     clique	bouton_login
+    pause    5s
     verification	icone
     pause	2s
     selectionne le module	Evaluations	bouton_evaluations

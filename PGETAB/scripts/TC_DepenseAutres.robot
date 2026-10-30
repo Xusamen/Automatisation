@@ -45,6 +45,7 @@ Module Depense
     appuyer sur tab
     saisis texte	souris	
     clique	bouton_login
+    pause    5s
     verification	icone
     pause	2s
     charge image    Module_Comptabilite
